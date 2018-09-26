@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import './CharlieCard.css';
+import { sampleSize } from 'lodash'
 
 class CharlieCard extends Component {
   state = {
+    sample: [],
     img: [
 'ash.png',
 'bates.png',
@@ -42,8 +45,11 @@ class CharlieCard extends Component {
   render() {
     return (
       <div>
-        {this.state.img.map(image => (
-          <img src={`/img/charlie-brown/${image}`} />)
+        {sampleSize(this.state.img, 3).map(image => (
+          <img 
+          key={image}
+          className='CharlieCard'
+          src={`/img/charlie-brown/${image}`} />)
         )}
       </div>
     )

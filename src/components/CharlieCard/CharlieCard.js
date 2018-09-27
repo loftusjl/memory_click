@@ -48,13 +48,18 @@ class CharlieCard extends Component {
   };
 
   handleClick = id => {
+    // create an object of the character that was clicked
     let clickState = this.state.character.find(char => char.id === id);
 console.log(clickState)
     if(clickState.clicked) {
+      //if it's already clicked, end the game
       this.gameLose();
     } else {
+      //set clicked to true
       clickState.clicked = true;
+      // create an array with all characters excluding the one that was clicked
       let newChars = this.state.character.filter(char => char.id !== id);
+      // add the unchanged characters to the updated character array
       newChars.push(clickState)
       console.log(`New clicked state ${clickState.clicked} for ${clickState.img}`)
 
@@ -64,11 +69,13 @@ console.log(clickState)
         topScore: this.state.score === this.state.topScore
           ? this.state.topScore + 1
           : this.state.topScore,
+          // replace character array with updated array
         character: newChars
       })
     }
   };
 
+  // create a rancomized selection of characters
   sample = sampleSize(this.state.character, 10);
 
   render() {
@@ -82,6 +89,7 @@ console.log(clickState)
           className='CharlieCard'
 
           onClick={ () => this.handleClick(image.id) }
+          // select random character from the sample array
           src={`/img/charlie-brown/${image.img}`} />)
         ).sort( () => Math.random() - 0.5) }
       </div>

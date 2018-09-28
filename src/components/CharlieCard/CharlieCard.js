@@ -87,6 +87,10 @@ sample = sampleSize(this.state.character, 10);
   render() {
     return (
       <div>
+        <div>
+          <span>Your Score: { this.state.score }</span>
+          <span>Top Score: { this.state.topScore }</span>
+        </div>
         { this.sample.map(image => (
           <img 
           key={image.id}

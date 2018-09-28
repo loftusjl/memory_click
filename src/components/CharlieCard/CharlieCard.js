@@ -43,9 +43,15 @@ class CharlieCard extends Component {
     ]
   };
 
-  gameLose = () => {
 
-  };
+
+
+  gameLose = () => {
+    const chars = this.state.character.map(char => ({ ...char, clicked: false }))
+    console.log('Characters', chars)
+    this.setState({ score: 0, chars })
+    console.log('NEW STATE', this.state)
+  }
 
   handleClick = id => {
     // create an object of the character that was clicked
@@ -76,7 +82,7 @@ console.log(clickState)
   };
 
   // create a rancomized selection of characters
-  sample = sampleSize(this.state.character, 10);
+sample = sampleSize(this.state.character, 10);
 
   render() {
     return (

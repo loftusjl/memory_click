@@ -43,11 +43,11 @@ class CharlieCard extends Component {
     ]
   };
 
-
-
+  // create a rancomized selection of characters
+  getSample = () => sampleSize(this.state.character, 10);
 
   gameLose = () => {
-    const chars = this.state.character.map(char => ({ ...char, clicked: false }))
+    const chars = this.state.character.map(character => ({ ...character, clicked: false }))
     console.log('Characters', chars)
     this.setState({ score: 0, chars })
     console.log('NEW STATE', this.state)
@@ -81,8 +81,7 @@ console.log(clickState)
     }
   };
 
-  // create a rancomized selection of characters
-sample = sampleSize(this.state.character, 10);
+  characterArray = this.getSample();
 
   render() {
     return (
@@ -91,12 +90,13 @@ sample = sampleSize(this.state.character, 10);
           <span>Your Score: { this.state.score }</span>
           <span>Top Score: { this.state.topScore }</span>
         </div>
-        { this.sample.map(image => (
+        { this.characterArray.map(image => (
           <img 
           key={image.id}
           id={image.id}
           alt={`${image.img}`}
           className='CharlieCard'
+          data-clicked={ image.clicked }
 
           onClick={ () => this.handleClick(image.id) }
           // select random character from the sample array

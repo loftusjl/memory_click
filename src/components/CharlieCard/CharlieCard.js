@@ -58,14 +58,13 @@ class CharlieCard extends Component {
             key={image.id}
             id={image.id}
             alt={`${image.img}`}
-            className='CharlieCard'
             data-clicked={ image.clicked }
 
             onClick={ () => this.handleClick(image.id) }
             // select random character from the sample array
-            src={`/img/charlie-brown/${image.img}`} />)
-            )
-          )
+            src={`/img/charlie-brown/${image.img}`} 
+          />
+          )))
             
     return game;
   } 
@@ -78,19 +77,21 @@ class CharlieCard extends Component {
     console.log('Characters', chars)
 
     // replace current state with the reset state. Score 0, clicked false
-    this.setState(function(prevState, props) {
-      return { score: 0, character: chars }
+    this.setState({
+      ...this.state,
+      score: 0,
+      character: chars
     })
-      console.log('Updated State:', this.state.character)
   }
-
+  
   handleClick = id => {
     // create an object of the character that was clicked
     let clickState = this.state.character.find(char => char.id === id);
     console.log(`Click State:`,clickState)
     if(clickState.clicked) {
-      //if it's already clicked, end the game
+      //if it's already clicked, reset the game
       this.gameReset();
+      console.log('Updated State:', this.state.character)
     } else {
       //set clicked to true
       clickState.clicked = true;

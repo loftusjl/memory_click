@@ -1,0 +1,24 @@
+html {
+    background: url('/img/830dc20e4dde5a010d747a8e351cb838.jpg') no-repeat center center fixed;
+    background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+.container {
+    width: 70%;
+    margin: 0 auto;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.CharlieCard {
+ margin: 3px;
+ box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
+ border-top: 6px solid #ff7e28;
+ height: 225px;
+}
+
+.scoreName {
+    color: #ff7e28;
+}

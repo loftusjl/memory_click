@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './CharlieCard.css';
 import { sampleSize } from 'lodash';
 
+
 class CharlieCard extends Component {
   constructor(props) {
     super(props)
@@ -46,7 +47,6 @@ class CharlieCard extends Component {
     }
   }
 
-
   // create a rancomized selection of characters
   getSample = () => {
     let game = [];
@@ -58,6 +58,7 @@ class CharlieCard extends Component {
             key={image.id}
             id={image.id}
             alt={`${image.img}`}
+            className='CharlieCard'
             data-clicked={ image.clicked }
 
             onClick={ () => this.handleClick(image.id) }
@@ -116,10 +117,10 @@ class CharlieCard extends Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <div>
-          <h1>Your Score: { this.state.score }</h1>
-          <h1>Top Score: { this.state.topScore }</h1>
+          <h1 className='scoreName'>Your Score: { this.state.score }</h1>
+          <h1 className='scoreName'>Top Score: { this.state.topScore }</h1>
         </div>
         { this.getSample() }
       </div>

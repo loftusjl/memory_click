@@ -3,49 +3,49 @@ import './CharlieCard.css';
 import { sampleSize } from 'lodash';
 
 class CharlieCard extends Component {
-  state = {
-    score: 0,
-    topScore: 0,
-    character: [
-      {id: '1',img: 'ash.png', clicked: false},
-      {id: '2',img: 'bates.png', clicked: false},
-      {id: '3',img: 'blade.png', clicked: false},
-      {id: '4',img: 'buffalobill.png', clicked: false},
-      {id: '5',img: 'carrie.png', clicked: false},
-      {id: '6',img: 'chucky.png', clicked: false},
-      {id: '7',img: 'cthulhu.png', clicked: false},
-      {id: '8',img: 'dracula.png', clicked: false},
-      {id: '9',img: 'edward.png', clicked: false},
-      {id:'10' ,img: 'frankenstein.png', clicked: false},
-      {id:'11' ,img: 'freddy.png', clicked: false},
-      {id:'12' ,img: 'furter.png', clicked: false},
-      {id:'13' ,img: 'ghostface.png', clicked: false},
-      {id:'14' ,img: 'hannibal.png', clicked: false},
-      {id:'15' ,img: 'jack.png', clicked: false},
-      {id:'16' ,img: 'jasongritty.png', clicked: false},
-      {id:'17' ,img: 'jason.png', clicked: false},
-      {id:'18' ,img: 'joker.png', clicked: false},
-      {id:'19' ,img: 'kramer.png', clicked: false},
-      {id:'20' ,img: 'lazarou.png', clicked: false},
-      {id:'21' ,img: 'leatherfacegritty.png', clicked: false},
-      {id:'22' ,img: 'leatherface.png', clicked: false},
-      {id:'23' ,img: 'mummy.png', clicked: false},
-      {id:'24' ,img: 'myers.png', clicked: false},
-      {id:'25' ,img: 'nosferatu.png', clicked: false},
-      {id:'26' ,img: 'rick.png', clicked: false},
-      {id:'27' ,img: 'sadako.png', clicked: false},
-      {id:'28' ,img: 'shaun.png', clicked: false},
-      {id:'29' ,img: 'slappy.png', clicked: false},
-      {id:'30' ,img: 'spaulding.png', clicked: false},
-      {id:'31' ,img: 'sweeny.png', clicked: false},
-      {id:'32' ,img: 'wolfman.png', clicked: false},
-      {id:'33' ,img: 'zombie.png', clicked: false},
-    ]
-  };
-
-  componentDidMount = () => {
-    this.gameReset();
+  constructor(props) {
+    super(props)
+    this.state = {
+      score: 0,
+      topScore: 0,
+      character: [
+        {id: '1',img: 'ash.png', clicked: false},
+        {id: '2',img: 'bates.png', clicked: false},
+        {id: '3',img: 'blade.png', clicked: false},
+        {id: '4',img: 'buffalobill.png', clicked: false},
+        {id: '5',img: 'carrie.png', clicked: false},
+        {id: '6',img: 'chucky.png', clicked: false},
+        {id: '7',img: 'cthulhu.png', clicked: false},
+        {id: '8',img: 'dracula.png', clicked: false},
+        {id: '9',img: 'edward.png', clicked: false},
+        {id:'10' ,img: 'frankenstein.png', clicked: false},
+        {id:'11' ,img: 'freddy.png', clicked: false},
+        {id:'12' ,img: 'furter.png', clicked: false},
+        {id:'13' ,img: 'ghostface.png', clicked: false},
+        {id:'14' ,img: 'hannibal.png', clicked: false},
+        {id:'15' ,img: 'jack.png', clicked: false},
+        {id:'16' ,img: 'jasongritty.png', clicked: false},
+        {id:'17' ,img: 'jason.png', clicked: false},
+        {id:'18' ,img: 'joker.png', clicked: false},
+        {id:'19' ,img: 'kramer.png', clicked: false},
+        {id:'20' ,img: 'lazarou.png', clicked: false},
+        {id:'21' ,img: 'leatherfacegritty.png', clicked: false},
+        {id:'22' ,img: 'leatherface.png', clicked: false},
+        {id:'23' ,img: 'mummy.png', clicked: false},
+        {id:'24' ,img: 'myers.png', clicked: false},
+        {id:'25' ,img: 'nosferatu.png', clicked: false},
+        {id:'26' ,img: 'rick.png', clicked: false},
+        {id:'27' ,img: 'sadako.png', clicked: false},
+        {id:'28' ,img: 'shaun.png', clicked: false},
+        {id:'29' ,img: 'slappy.png', clicked: false},
+        {id:'30' ,img: 'spaulding.png', clicked: false},
+        {id:'31' ,img: 'sweeny.png', clicked: false},
+        {id:'32' ,img: 'wolfman.png', clicked: false},
+        {id:'33' ,img: 'zombie.png', clicked: false},
+      ]
+    }
   }
+
 
   // create a rancomized selection of characters
   getSample = () => {
@@ -78,10 +78,12 @@ class CharlieCard extends Component {
 
     // replace current state with the reset state. Score 0, clicked false
     this.setState({
-      ...this.state,
-      score: 0,
-      character: chars
+      score : 0,
+      character:chars
+    }, () => {
+        console.log('state is ', this.state);
     })
+   
   }
   
   handleClick = id => {
@@ -91,7 +93,7 @@ class CharlieCard extends Component {
     if(clickState.clicked) {
       //if it's already clicked, reset the game
       this.gameReset();
-      console.log('Updated State:', this.state.character)
+      console.log('Updated State:', this.state)
     } else {
       //set clicked to true
       clickState.clicked = true;
